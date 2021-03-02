@@ -1,0 +1,9 @@
+@import url(reset.css);
+
+img[src="https://wallpapercave.com/wp/1xErpdy.jpg"] {
+    width: 300px;
+}
+
+img[alt="peace"] {
+    width: 600px;  
+}
