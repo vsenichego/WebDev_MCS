@@ -1,4 +1,88 @@
-header h1 {
-  font-size: 1.5em;
+section {
+  min-width: 1px;
+  border: 1px solid black;
+}
+
+footer {
+  border: 1px solid black;
+}
+
+article {
+  border: 2px solid black;
+  min-width: 200.34px;
+  font-family: "Helvetica Neue";
+  background-image: url("/img/background.png");
+}
+
+article {
+  border: 1px solid black;
+  -ms-flex: 1;
+}
+
+header h1, header h2 {
   color: #0d0d0d;
+}
+header h1 {
+  font-size: 1.5rem;
+}
+header h1 span {
+  color: #ccc;
+}
+header h2 {
+  font-size: 1.3rem;
+}
+header > time {
+  color: #ccc;
+}
+header > span {
+  font-size: 0.8rem;
+}
+
+.blog-post {
+  padding: 2em 0;
+}
+:not(.blog-post) {
+  margin-top: 1em;
+}
+.blog-post__header {
+  padding: 1em 0;
+}
+.blog-post__header--collapsed {
+  padding: 0;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  color: purple;
+}
+a:active {
+  color: rebeccapurple;
+}
+a:visited {
+  color: plum;
+}
+
+a {
+  font-size: 0.9rem;
+}
+a:hover {
+  text-decoration: none;
+  color: red;
+  padding: 1px;
+}
+
+body {
+  margin: 0;
+  border: 1px solid green;
+}
+
+article {
+  margin: 0;
+  border: 1px solid black;
+}
+
+body {
+  color: black;
 }

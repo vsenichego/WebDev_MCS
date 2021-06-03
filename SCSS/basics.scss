@@ -1,6 +1,142 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@use 'shared';
+
+$var1: true;
+$var2: false;
+
+$no_value: null;
+
+$border_width: 2px;
+$width: 200.34px;
+$font_family: 'Helvetica Neue';
+$file_name: 'background.png';
+$bg: rgba(255, 144, 230, 0.6);
+$numbers: (12px 40px 50% 1rem);
+$border: 1px solid black;
+$border_pairs: ("width": 1px, "color": black, "type": solid);
+section {
+    min-width: list.nth($border, 1);
+    border: $border;
+}
+
+footer {
+    border: map.get($border_pairs, "width") map.get($border_pairs, "type") map.get($border_pairs, "color");
+}
+
+article {
+    $color: black;
+    border: $border_width solid $color;
+    min-width: $width;
+    font-family: $font_family;
+    background-image: url("/img/#{$file_name}");
+}
+
+$type: solid;
+$prefix: -ms;
+article {
+    border: 1px $type black;
+    #{$prefix}-flex: 1;
+}
+
 header {
-    h1 {
-        font-size: 1.5em;
+    h1, h2 {
         color: #0d0d0d;
     }
+
+    h1 {
+        font-size: 1.5rem;
+
+        span {
+            color: #ccc;
+        }
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    > {
+        time {
+            color: #ccc;
+        }
+        span {
+            font-size: 0.8rem;
+        }
+
+    }
+}
+
+.blog-post {
+    padding: 2em 0;
+
+    :not(&) {
+        margin-top: 1em;
+    }
+
+    &__header {
+        padding: 1em 0;
+        
+        &--collapsed {
+            padding: 0;
+        }
+    }
+
+    
+
+}
+
+a {
+    &:link {
+        text-decoration: none;
+    }
+    &:hover {
+        color: purple;
+    }
+    &:active {
+        color: rebeccapurple;
+    }
+    &:visited {
+        color: plum;
+    }
+}
+
+@mixin no_margin() {
+    margin: 0;
+}
+
+@mixin border($type, $color: black) {
+    border: 1px $type $color;
+}
+
+@mixin link() {
+    &:hover {
+        text-decoration: none;
+        color: red;
+        @content;
+    }
+}
+
+a {
+    font-size: 0.9rem;
+    @include link() {
+        padding: 1px;
+    }
+}
+
+body {
+    @include no_margin();
+    @include border(solid, green)
+
+}
+
+article {
+    @include no_margin();
+    @include border(solid)
+}
+
+
+body {
+    color: shared.$color;
 }
