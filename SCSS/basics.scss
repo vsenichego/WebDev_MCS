@@ -1,7 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
 
-@use 'shared';
+@use 'framework';
 
 $var1: true;
 $var2: false;
@@ -64,7 +64,6 @@ header {
         span {
             font-size: 0.8rem;
         }
-
     }
 }
 
@@ -82,9 +81,6 @@ header {
             padding: 0;
         }
     }
-
-    
-
 }
 
 a {
@@ -138,5 +134,58 @@ article {
 
 
 body {
-    color: shared.$color;
+    color: framework.$color;
+    
+}
+
+footer {
+    @include framework.border();
+    @include framework.padding();
+}
+
+.message {
+    background-color: powderblue;
+    border: 1px solid powderblue;
+}
+
+.generic {
+    font-family: 'Arial';
+}
+
+.message-important {
+    font-size: 1.5rem;
+    font-weight: bold;
+    @extend .message, .generic;
+}
+
+
+@mixin paddings($x_status: 'nullify') {
+    padding-left: 0;
+    padding-right: 0;
+    @if $x_status == 'nullify' {
+        padding-top: 0;
+        padding-bottom: 0;
+    } @else if $x_status == 'single' {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    } @else {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+body {
+    @include paddings();
+}
+
+@mixin children {
+    @for $i from 1 through 10 {
+        &:nth-child(2n + #{$i}) {
+            background-color: grey;
+        }
+    }
+}
+
+ul {
+    @include children();
 }
